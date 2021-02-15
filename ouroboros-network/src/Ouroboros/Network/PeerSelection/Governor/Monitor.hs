@@ -135,7 +135,7 @@ connections PeerSelectionActions{peerStateActions = PeerStateActions {monitorPee
                                    (Map.keysSet demotedToCold)
                                    (reconnectDelay `addTime` now)
                                . Set.foldr'
-                                   ((snd .) . KnownPeers.incrementFailCount)
+                                   ((snd .) . KnownPeers.decrementBackoffs)
                                    (knownPeers st)
                                $ (Map.keysSet demotedToCold)
 
